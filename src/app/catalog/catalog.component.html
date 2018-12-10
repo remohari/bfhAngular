@@ -1,0 +1,45 @@
+<form>
+<div class="form-group">
+  
+    <label class="control-label" for="inputGroup">Search Bookstore </label>
+    <div class="input-group">
+        <input (input)="searchTerm=$event.target.value" type="text" class="form-control"
+               placeholder="Search" id="inputGroup"/>
+               
+        <span class="input-group-addon">
+          <button class="no-margin" (click)="searchBook()"><span class="glyphicon glyphicon-search"></span></button>
+        </span>
+    </div>
+</div>
+</form>
+<div class="panel-body">        
+
+<div *ngIf="selectedBook">
+    <book-details [book]="selectedBook" (back)="selectedBook=null"></book-details>
+</div>
+<div *ngIf="!selectedBook">
+  <div *ngIf="!books.length">
+    <div class="alert alert-primary">Nothing found</div>
+  </div>
+  <div *ngIf="books.length">
+<div class="table container">
+<table class="table table-hover">
+  <thead>
+  <th>Title</th>
+  <th>Price</th>
+  <th>Authors</th>
+  <th>Publisher</th>
+  </thead>
+  <tbody>
+  <tr *ngFor="let book of books" (click)="selectBook(book)">
+    <td class="col-md-2">{{book.title}}</td>
+    <td class="col-md-1"> {{book.price}}</td>
+    <td class="col-md-3">{{book.authors}}</td>
+    <td class="col-md-3">{{book.publisher}}</td>
+  </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</div>

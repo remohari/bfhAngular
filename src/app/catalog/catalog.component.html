@@ -1,6 +1,6 @@
-<form>
+<div class="contianer">
 <div class="form-group">
-  
+<form>
     <label class="control-label" for="inputGroup">Search Bookstore </label>
     <div class="input-group">
         <input (input)="searchTerm=$event.target.value" type="text" class="form-control"
@@ -10,8 +10,9 @@
           <button class="no-margin" (click)="searchBook()"><span class="glyphicon glyphicon-search"></span></button>
         </span>
     </div>
-</div>
 </form>
+</div>
+</div>
 <div class="panel-body">        
 
 <div *ngIf="selectedBook">

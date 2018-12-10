@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { Book } from 'src/Common/book';
+import { OrderService } from 'src/services/order.service';
+import {Router } from '@angular/router';
 
 @Component({
   selector: 'book-details',
@@ -13,8 +15,13 @@ export class BookDetailsComponent implements OnInit {
   @Output()
   public back = new EventEmitter();
   
-  constructor() { }  
-  ngOnInit() {
+    constructor(private router: Router, private orderService: OrderService) {}
+    
+    public orderBook(): void {
+        this.orderService.OrderBook(this.book);
+        this.router.navigateByUrl('/customer-details');
+    }
+    ngOnInit() {
   }
 
 }

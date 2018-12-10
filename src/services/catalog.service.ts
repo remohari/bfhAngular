@@ -7,7 +7,7 @@ import { BOOK_DATA } from 'src/Common/book-data';
 })
 export class CatalogService {
     public searchBooks(keyowrds: string): Promise<Book[]> {
-        return new Promise<Books[]>((resolve, reject) => {
+        return new Promise<Book[]>((resolve, reject) => {
             let books = BOOK_DATA;
             if(keyowrds) {
                 books = books.filter( book =>  this.objectContains(book, keyowrds));

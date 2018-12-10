@@ -26,5 +26,6 @@ export class CatalogComponent implements OnInit {
   searchBook(): void {
     this.catalogService.searchBooks(this.searchTerm)
         .then( books => this.books = books)
-        .catch( () => this.books = new Books[]);
+        .catch( () => this.books = []);
+  }
 }

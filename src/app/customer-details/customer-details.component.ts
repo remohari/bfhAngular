@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Customer, CreditCardType } from 'src/Common/customer';
+import { OrderService } from 'src/services/order.service';
 
 @Component({
   selector: 'app-customer-details',
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./customer-details.component.css']
 })
 export class CustomerDetailsComponent implements OnInit {
-
-  constructor() { }
+    customer: Customer = new Customer();
+    creditCardTypes: string[] = Object.keys(CreditCardType);
+  constructor( private orderService: OrderService) { }
 
   ngOnInit() {
   }
 
+  saveCustomer():void {
+    this.orderService.SaveCusomer(this.customer);
+  }
 }
